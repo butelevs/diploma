@@ -1,0 +1,236 @@
+# Тест производительности страницы http://127.0.0.1:8000/phone/ без кэширования
+(env) (base) balanyuken@iMac-Evgenia diplom-django % ab -n 1000 -c 10 http://127.0.0.1:8000/phone/
+This is ApacheBench, Version 2.3 <$Revision: 1913912 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        WSGIServer/0.2
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /phone/
+Document Length:        1697 bytes
+
+Concurrency Level:      10
+Time taken for tests:   12.494 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      2140000 bytes
+HTML transferred:       1697000 bytes
+Requests per second:    80.04 [#/sec] (mean)
+Time per request:       124.944 [ms] (mean)
+Time per request:       12.494 [ms] (mean, across all concurrent requests)
+Transfer rate:          167.26 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    23  124 103.3     96    1142
+Waiting:       17  118 103.2     89    1134
+Total:         23  124 103.3     96    1142
+
+Percentage of the requests served within a certain time (ms)
+  50%     96
+  66%    109
+  75%    122
+  80%    134
+  90%    186
+  95%    282
+  98%    520
+  99%    643
+ 100%   1142 (longest request)
+
+
+# Тест производительности страницы http://127.0.0.1:8000/phone/ с кэшированием
+(env) (base) balanyuken@iMac-Evgenia diplom-django % ab -n 1000 -c 10 http://127.0.0.1:8000/phone/
+This is ApacheBench, Version 2.3 <$Revision: 1913912 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        WSGIServer/0.2
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /phone/
+Document Length:        1697 bytes
+
+Concurrency Level:      10
+Time taken for tests:   11.336 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      2140000 bytes
+HTML transferred:       1697000 bytes
+Requests per second:    88.21 [#/sec] (mean)
+Time per request:       113.362 [ms] (mean)
+Time per request:       11.336 [ms] (mean, across all concurrent requests)
+Transfer rate:          184.35 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:    13  113  62.8     98    1049
+Waiting:       12  104  62.6     88    1041
+Total:         13  113  62.8     98    1049
+
+Percentage of the requests served within a certain time (ms)
+  50%     98
+  66%    106
+  75%    116
+  80%    123
+  90%    146
+  95%    200
+  98%    269
+  99%    343
+ 100%   1049 (longest request)
+
+# Вывод:
+# Requests per second: Запросы в секунду выше с включенным кэшированием.
+# Time per request (mean): Время на один запрос ниже с включенным кэшированием.
+# Time taken for tests: Время выполнения тестов меньше с включенным кэшированием.
+
+
+
+# Тест производительности страницы http://127.0.0.1:8000/tablet/ без кэширования
+(env) (base) balanyuken@iMac-Evgenia diplom-django % ab -n 1000 -c 10 http://127.0.0.1:8000/tablet/
+This is ApacheBench, Version 2.3 <$Revision: 1913912 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        WSGIServer/0.2
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /tablet/
+Document Length:        1273 bytes
+
+Concurrency Level:      10
+Time taken for tests:   11.334 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      1716000 bytes
+HTML transferred:       1273000 bytes
+Requests per second:    88.23 [#/sec] (mean)
+Time per request:       113.342 [ms] (mean)
+Time per request:       11.334 [ms] (mean, across all concurrent requests)
+Transfer rate:          147.85 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    34  112 119.9     87    1458
+Waiting:       33  106 119.8     80    1451
+Total:         34  112 119.9     87    1458
+
+Percentage of the requests served within a certain time (ms)
+  50%     87
+  66%     96
+  75%    106
+  80%    116
+  90%    145
+  95%    204
+  98%    337
+  99%    834
+ 100%   1458 (longest request)
+
+# Тест производительности страницы http://127.0.0.1:8000/tablet/ c кэшированием
+(env) (base) balanyuken@iMac-Evgenia diplom-django % ab -n 1000 -c 10 http://127.0.0.1:8000/tablet/
+This is ApacheBench, Version 2.3 <$Revision: 1913912 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        WSGIServer/0.2
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /tablet/
+Document Length:        1273 bytes
+
+Concurrency Level:      10
+Time taken for tests:   10.546 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      1716000 bytes
+HTML transferred:       1273000 bytes
+Requests per second:    94.82 [#/sec] (mean)
+Time per request:       105.459 [ms] (mean)
+Time per request:       10.546 [ms] (mean, across all concurrent requests)
+Transfer rate:          158.90 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    40  105  72.4     91    1365
+Waiting:       40   96  72.2     82    1354
+Total:         40  105  72.4     91    1365
+
+Percentage of the requests served within a certain time (ms)
+  50%     91
+  66%     97
+  75%    104
+  80%    111
+  90%    132
+  95%    174
+  98%    273
+  99%    415
+ 100%   1365 (longest request)
+
+# Вывод:
+# Requests per second: Запросы в секунду выше с включенным кэшированием.
+# Time per request (mean): Время на один запрос ниже с включенным кэшированием.
+# Time taken for tests: Время выполнения тестов меньше с включенным кэшированием.

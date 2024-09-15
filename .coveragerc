@@ -1,0 +1,2 @@
+[run]
+omit=tests/*,.env/*,manage.py,myshop/asgi.py,myshop/wsgi.py,*tests.py
